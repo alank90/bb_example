@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://underscorejs.org/underscore-min.js"></script>
+	<script src="http://backbonejs.org/backbone-min.js"></script>
+    </head>
+
+<body>
+	<script>
+         var MyModel = Backbone.Model.extend();      //'LangNames' is a model name
+
+         //'mydata' variable contains values to be displayed in sorted order
+         var mydata = [
+            {id:4, f_name: 'smith'},
+            {id:2, f_name: 'cruise'},
+            {id:3, f_name: 'john'}
+         ];
+
+         //'myval' is a collection instance and includes array of values stored in 'mydata' variable
+         var myval = new Backbone.Collection(mydata,{
+            model:MyModel,   //The model 'MyModel' is specified by overriding the "model" property
+            comparator: 'f_name'   //The 'comparator' maintain the collection in sorted order
+         });
+          var a = new MyModel({id:6, f_name: 'Aaron'});
+           myval.add(a);
+         //Here, displaying the array of values using collection instance 'myval' and 'models' method
+          document.write('The sorted (based on f_name) order of collection:', JSON.stringify(myval));
+    </script>
+</body>
+
+</html>
