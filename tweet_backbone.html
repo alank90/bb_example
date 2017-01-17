@@ -41,6 +41,7 @@
 							avatar: 'avatar.jpg',
 							username: 'Aaronius',
 							text: 'Honey roasted peanuts rock my sox.'
+
 						});
 
 						var row = new TweetRow({
@@ -48,6 +49,9 @@
 						});
 
 						this.$el.append(row.$el);
+                        console.dir(row);
+                        console.dir(this);
+
 						return this;
 					}
 				});
@@ -57,8 +61,10 @@
 		</script>
 
 		<script type="text/template" id="tweet-row-template">
-			<div style="float: left"><img src="<%= avatar %>"/></div>
-			<div style="margin-left: 60px">
+			<div style="float: left">
+               <img src="<%= avatar %>"/>
+            </div>
+			<div style="margin-left: 120px">
 				<p><%= username %></p>
 				<p><%= text %></p>
 			</div>
