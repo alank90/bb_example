@@ -2,31 +2,34 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://underscorejs.org/underscore-min.js"></script>
-    <script src="http://backbonejs.org/backbone-min.js"></script>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://underscorejs.org/underscore-min.js"></script>
+	<script src="http://backbonejs.org/backbone-min.js"></script>
 </head>
 
 <body>
+	<script>
+var Todo = Backbone.Model.extend({
+  defaults: {
+    title: '',
+    completed: false
+  }
+});
 
-    <script>
-        var Todo = Backbone.Model.extend({});
-        // We can then create our own concrete instance of a (Todo) model
-        // with no values at all:
-        var todo1 = new Todo();
-        // Following logs: {}
-        console.log(JSON.stringify(todo1));
-        // or with some arbitrary data:
-        var todo2 = new Todo({
-            title: 'Check the attributes of both model instances in the console.'
-            , completed: true
-        });
-        // Following logs: {"title":"Check the attributes of both model instances in the console.","completed":true}
-        console.log(JSON.stringify(todo2));
-    </script>
+var TodosCollection = Backbone.Collection.extend({
+  model: Todo
+});
+
+var myTodo = new Todo({title:'Read the whole book', id: 2});
+
+// pass array of models on collection instantiation
+var todos = new TodosCollection([myTodo]);
+console.log("Collection size: " + todos.length); // Collection size: 1
+console.dir(todos);
+console.log(todos.models[0].attributes.title);
+	</script>
 </body>
 
 </html>
