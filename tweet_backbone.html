@@ -24,9 +24,10 @@
 					initialize: function() {
 						this.render();
 					},
-
-					render: function() {
+                   	render: function() {
 						this.$el.html(this._template(this.model.toJSON()));
+                        console.log("This is this.model.toJSON in TweetRow View: ");
+                        console.log(this.model.toJSON());
 						return this;
 					}
 				});
@@ -34,29 +35,32 @@
 				var App = Backbone.View.extend({
 					initialize: function() {
 						this.render();
-					},
+                    },
 
 					render: function() {
 						var tweet = new Backbone.Model({
 							avatar: 'avatar.jpg',
 							username: 'Aaronius',
 							text: 'Honey roasted peanuts rock my sox.'
-
 						});
 
-						var row = new TweetRow({
-							model: tweet
+                        var row = new TweetRow({
+				            model: tweet
 						});
 
 						this.$el.append(row.$el);
-                        console.dir(row);
-                        console.dir(this);
+                        console.log("This is the row model object(Tweetrow): ");
+                        console.log(row);
+                        console.log("This is the row.$el: ");
+                        console.log(row.$el);
 
-						return this;
+                        return this;
 					}
 				});
 
 				var app = new App({el: $('body')});
+                console.log("This is app var (New App backbone view): ");
+                console.log(app);
 			});
 		</script>
 
