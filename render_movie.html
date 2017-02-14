@@ -10,27 +10,28 @@
 </head>
 
 <body>
-    <div id="container-movie"></div>
-
+   <div id="container-movie"></div>
+ 
     <script type="text/template" id="template-movie">
         Title: <%=title%>
     </script>
-
+    
     <script type="text/javascript">
         var Movie = Backbone.Model.extend();
-
+ 
         var MovieView1 = Backbone.View.extend({
             template: _.template($("#template-movie").html()),
             initialize: function () {
-                console.log("MovieView initialize");
+            console.log("MovieView initialize");
             },
             render: function () {
                 var htmlOutput = this.template(this.model.toJSON());
                 this.$el.html(htmlOutput);
+                console.log(this.el);
                 return this;
             }
         });
-
+ 
         $(function () {
             var movie = new Movie({ title: "Lion King" });
             var movieView1 = new MovieView1({ model: movie, el: $("#container-movie") });
